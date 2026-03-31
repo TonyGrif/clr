@@ -1,0 +1,44 @@
+model: densenet121
+dataset: cifar10
+
+runtime:
+  epochs: 20
+  batch_size: 128
+  seed: 42
+
+experiments:
+  sgd_default:
+    optimizer:
+      name: SGD
+    scheduler:
+      name: constant
+
+  sgd_momentum_default:
+    optimizer:
+      name: SGD
+      momentum: 0.9
+    scheduler:
+      name: constant
+
+  sgd_wd_default:
+    optimizer:
+      name: SGD
+      weight_decay: 0.0001
+    scheduler:
+      name: constant
+
+  sgd_very_high_momentum_wd:
+    optimizer:
+      name: SGD
+      lr: 0.1
+      momentum: 0.9
+      weight_decay: 0.0001
+    scheduler:
+      name: constant
+
+  sgd_very_high:
+    optimizer:
+      name: SGD
+      lr: 0.1
+    scheduler:
+      name: constant

@@ -1,0 +1,50 @@
+model: resnet18
+dataset: cifar10
+
+runtime:
+  epochs: 20
+  batch_size: 128 # 352 Iterations per Epoch
+  seed: 42
+
+experiments:
+  adam_default:
+    optimizer:
+      name: Adam
+    scheduler:
+      name: constant
+
+  adam_wd_default:
+    optimizer:
+      name: Adam
+      weight_decay: 0.0001
+    scheduler:
+      name: constant
+
+  adam_lr_very_high:
+    optimizer:
+      name: Adam
+      lr: 0.1
+    scheduler:
+      name: constant
+
+  adam_lr_high:
+    optimizer:
+      name: Adam
+      lr: 0.01
+    scheduler:
+      name: constant
+
+  adam_lr_low:
+    optimizer:
+      name: Adam
+      lr: 0.0001
+    scheduler:
+      name: constant
+
+  adam_lr_high_wd:
+    optimizer:
+      name: Adam
+      lr: 0.01
+      weight_decay: 0.0001
+    scheduler:
+      name: constant
