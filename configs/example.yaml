@@ -1,0 +1,30 @@
+model: resnet18
+dataset: cifar10
+
+runtime:
+  epochs: 5
+  batch_size: 128
+  seed: 42
+
+experiments:
+  baseline_flat:
+    optimizer:
+      name: SGD
+      lr: 0.01
+      momentum: 0.9
+      weight_decay: 0.0001
+    scheduler:
+      name: constant
+
+  clr_triangular:
+    optimizer:
+      name: SGD
+      lr: 0.01
+      momentum: 0.9
+      weight_decay: 0.0001
+    scheduler:
+      name: CyclicLR
+      base_lr: 0.001
+      max_lr: 0.1
+      step_size_up: 2000
+      mode: triangular
