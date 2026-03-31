@@ -1,6 +1,7 @@
 pyyaml
 seaborn
 matplotlib
+pandas
 ruff
 
 -e .

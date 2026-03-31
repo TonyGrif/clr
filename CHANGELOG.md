@@ -9,3 +9,4 @@
 - Dataset loading: src/datasets/cifar.py with 45k train / 5k val / 10k test split
 - Run logger: src/logs/run_logger.py accumulates per-iteration metrics and writes log.json
 - Training engine: src/training/trainer.py with dynamic optimizer/scheduler loading and per-iteration logging
+- Plotting: src/plotting/plots.py generates accuracy and learning rate PNGs using seaborn objects

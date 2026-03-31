@@ -8,6 +8,7 @@ from src.config import load_config
 from src.datasets.cifar import get_cifar10_loaders
 from src.logs.run_logger import RunLogger
 from src.models.loader import load_model
+from src.plotting.plots import plot_run
 from src.training.trainer import Trainer
 
 
@@ -46,6 +47,16 @@ def main() -> None:
 
     os.makedirs("runs", exist_ok=True)
 
+    epochs = config["runtime"]["epochs"]
+    iters_per_epoch = len(train_loader)
+    total_iterations = iters_per_epoch * epochs
+    log.info(
+        "Runtime: %d epochs × %d iterations/epoch = %d total iterations per experiment",
+        epochs,
+        iters_per_epoch,
+        total_iterations,
+    )
+
     for exp_name, exp_config in config["experiments"].items():
         log.info("--- Running experiment: %s ---", exp_name)
         run_dir = os.path.join("runs", exp_name)
@@ -66,6 +77,8 @@ def main() -> None:
         trainer.run()
         run_logger.finalize()
         log.info("Logs written to %s/log.json", run_dir)
+        plot_run(run_dir)
+        log.info("Plots written to %s/", run_dir)
 
 
 if __name__ == "__main__":
