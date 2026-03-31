@@ -1,0 +1,6 @@
+pyyaml
+seaborn
+matplotlib
+ruff
+
+-e .
